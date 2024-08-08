@@ -14,4 +14,4 @@ bash脚本中路径名中带有checkpoint的参数，是模型的加载地址。
 
 具体bash中各个参数更详细的细节以及代码的整体详细结构可以 @刘文锐 进行询问。
 
-！！！preprocess/asr/DNSMOS,从外面上传进来建立下。上传之后删除这一行。
+！！！ML_TTS_Dataset/preprocess/asr/DNSMOS,从外面上传进来建立下。上传之后删除这一行。

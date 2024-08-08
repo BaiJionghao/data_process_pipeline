@@ -13,3 +13,5 @@ bash脚本中路径名中带有checkpoint的参数，是模型的加载地址。
 目前代码仅支持中英两种语言，且参数仅在中文上进行较为良好的验证，部分英文上的超参数还需要调整（这部分超参数可能会影响对不佳样本的筛选力度）。如果需要使用英文，则需要将bash脚本中的initial_prompt更换为"The following is a record of speech."。同时，需要注意bash中的available_langs参数，其中不填写zh的话无法支持中文，不填写en的话无法支持英文。
 
 具体bash中各个参数更详细的细节以及代码的整体详细结构可以 @刘文锐 进行询问。
+
+！！！preprocess/asr/DNSMOS,从外面上传进来建立下。上传之后删除这一行。

@@ -1,1 +1,15 @@
 # data_process_pipeline
+
+bash 下的两个脚本类似，run_single_split_dir对输入路径做了初步的分解分析。run_demo则是简单的直接输入路径。
+
+lang2align_model_yaml_path 参数需要更改，关注bash下的lang2align_model.yaml的具体路径。
+
+bash脚本中路径名中带有checkpoint的参数，是模型的加载地址。需要依据具体地址更换。原本的放ckpt的地址为服务器10.44.20.103的/mnt/yuyin1/cbu-tts/checkpoint。
+
+核心代码位于./ML_TTS_Dataset/preprocess/asr/whisperx_pipeline.py中的WhisperxPipeline.forward函数，用于执行模型已经后续的处理流程，其次是WhisperxPipeline.load_whisperx_model函数，用于加载模型
+
+脚本中应当注意更改的是gpu_list和n_process，如果gpu_list是多卡，则仅支持每张卡分配一个进程，此时n_process应当与gpu_list中显卡数量保持一致。如果gpulist是一张卡，那么将实现一卡多进程。还有就是input_audio_root，output_root和error_log_dir应当注意进行同步修改。
+
+目前代码仅支持中英两种语言，且参数仅在中文上进行较为良好的验证，部分英文上的超参数还需要调整（这部分超参数可能会影响对不佳样本的筛选力度）。如果需要使用英文，则需要将bash脚本中的initial_prompt更换为"The following is a record of speech."。同时，需要注意bash中的available_langs参数，其中不填写zh的话无法支持中文，不填写en的话无法支持英文。
+
+具体bash中各个参数更详细的细节以及代码的整体详细结构可以 @刘文锐 进行询问。
